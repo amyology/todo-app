@@ -1,0 +1,13 @@
+<div ng-app="app">
+
+  <div ng-controller="todoController">
+
+    <li ng-repeat="task in tasks track by $index" ng-click="deleteTask($index)">{{ task }}</li>
+
+    <input ng-model="newTask">
+
+    <button class="submit-button" ng-click="addTask(newTask)">Add</button>
+
+  </div>
+
+</div>
