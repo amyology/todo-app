@@ -1,12 +1,17 @@
 <div ng-app="app">
 
-  <div ng-controller="todoController">
-
-    <li ng-repeat="task in tasks track by $index" ng-click="deleteTask($index)">{{ task }}</li>
+  <div ng-controller="todoCtrl">
 
     <input ng-model="newTask">
 
     <button class="submit-button" ng-click="addTask(newTask)">Add</button>
+    
+    <div ng-repeat="task in tasks track by $index">
+
+      <li ng-click="strike(task)" ng-class="{strikethrough: task.complete}">{{ task.text }}</li>
+<!--       <button ng-click="deleteTask($index)">Delete</button>  -->
+
+    </div>
 
   </div>
 
