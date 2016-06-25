@@ -2,19 +2,22 @@
 
   <div ng-controller="todoCtrl">
 
-    <input ng-model="newTask" placeholder="Thing to do">
+    <input ng-model="newTask" placeholder="Add a thing to do">
     <button ng-click="addTask(newTask)">Add</button><br><br>
 
     <span class="headertext">Tasks</span><br>
     
-    <ol>
+    <ul>
       <div ng-repeat="task in tasks track by $index">
-        <li ng-click="completeTask(task)" ng-class="{strikethrough: task.complete}">{{ task.text }} <span class="smalltext" ng-click="deleteTask($index)">remove</span></li><br>
+        <li style="list-style-type: circle" ng-click="completeTask(task)" ng-class="{strikethrough: task.complete}" ng-show="task.visible">{{ task.text }} <span class="smalltext" ng-click="deleteTask($index)">remove</span></li><br>
       </div>
-    </ol>
+    </ul>
 
     {{ countTasks() }} <br><br>
 
+    <button ng-click="showAll()">Show All</button>
+    <button ng-click="showActive()">Show Active</button>
+    <button ng-click="showCompleted()">Show Completed</button>
     <button ng-click="clearCompleted()">Clear Completed</button>
     <button ng-click="clearAll()">Clear All</button>
 

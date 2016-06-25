@@ -6,22 +6,26 @@
 
     $scope.tasks = [{
       text: "un",
-      complete: false
+      complete: false,
+      visible: true
     }, 
     {
       text: "deux",
-      complete: false
+      complete: false,
+      visible: true
     }, 
     {
       text: "trois",
-      complete: false
+      complete: false,
+      visible: true
     }];
 
     $scope.addTask = function(newText) {
       if (newTask !== '') {
         var newTask = {
           text: newText,
-          complete: false
+          complete: false,
+          visible: true
         }
         $scope.tasks.push(newTask);
         $scope.newTask = '';
@@ -66,7 +70,35 @@
         }
       });
       $scope.tasks = activeTasks;
-    }
+    };
+
+    $scope.showActive = function() {
+      angular.forEach($scope.tasks, function(task, index) {
+        if (task.complete) {
+          task.visible = false;
+        }
+        else {
+          task.visible = true;
+        }
+      });
+    };
+
+    $scope.showCompleted = function() {
+      angular.forEach($scope.tasks, function(task, index) {
+        if (task.complete) {
+          task.visible = true;
+        }
+        else {
+          task.visible = false;
+        }
+      });
+    };
+
+    $scope.showAll = function() {
+      angular.forEach($scope.tasks, function(task, index) {
+        task.visible = true;
+      });
+    };
 
     window.scope = $scope;
 
